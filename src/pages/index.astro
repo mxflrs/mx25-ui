@@ -1,8 +1,22 @@
 ---
-import Welcome from '../components/templates/Welcome.astro';
-import Layout from '../components/layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/organisms/Navbar.astro';
+import Footer from '../components/organisms/Footer.astro';
+import Hero from '../components/organisms/Hero.astro'
+import Experience from '../components/organisms/Experience.astro'
+import CaseStudies from '../components/organisms/CaseStudies.astro'
+// import Journal from '../components/organisms/Journal.astro'
+import Contact from '../components/organisms/Contact.astro'
+import Technologies from '../components/organisms/Technologies.astro'
+// import { client } from "../../core/lib/sanity";
+// const experiences = await client.fetch(`*[_type == "experiences"]`);
 ---
-
 <Layout>
-	<Welcome />
+	<Navbar />
+	<Hero />
+	<Experience />
+	<CaseStudies />
+	<Contact />
+	<Technologies />
+	<Footer />
 </Layout>
