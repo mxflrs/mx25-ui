@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.5",
+    "@sanity/client": "^6.27.1",
     "astro": "^5.1.9",
     "astro-htmx": "^1.0.6",
     "htmx.org": "^1.9.12",
