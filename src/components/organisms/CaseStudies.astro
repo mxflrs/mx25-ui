@@ -1,7 +1,25 @@
 ---
-import Container from "../molecule/Container.astro";
+import type { ICaseStudy } from '../../core/interfaces/case-study.interface';
+import Container from '../molecule/Container.astro';
+interface Props {
+    caseStudies: ICaseStudy[];
+}
+const { caseStudies }: Props = Astro.props;
 ---
 
-<Container title="Case Studies">
-    <h1>Case Studies</h1>
+<Container title="Case Studies" className="pt-32">
+    <div class="grid grid-cols-2 gap-4">
+        {
+            caseStudies.map((cs) => (
+                <div class="flex flex-col bg-white rounded-md min-h-56">
+                    <p>{cs.title}</p>
+                    <div class="flex gap-2 p-2">
+                        {cs.technologies.map((t) => (
+                            <p>{t.technology}</p>
+                        ))}
+                    </div>
+                </div>
+            ))
+        }
+    </div>
 </Container>
