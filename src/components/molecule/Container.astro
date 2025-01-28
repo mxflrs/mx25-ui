@@ -1,7 +1,25 @@
 ---
-const { className = '' } = Astro.props;
+const { className = '', title = '' } = Astro.props;
+const defaultClasses = 'pb-16 px-4';
+
+const defaultClassesArray = defaultClasses.split(' ');
+const customClassesArray = className.split(' ');
+
+// Filter out defaults that conflict with customClasses
+const classes = [
+    ...defaultClassesArray.filter((cls) => !customClassesArray.includes(cls)),
+    ...customClassesArray,
+].join(' ');
 ---
 
-<section class=`${className}`>
-    
+<section class=`${classes}`>
+    {
+        title.length > 0 && (
+            <div class="flex gap-2 items-center pb-2">
+                <i class="ri-corner-down-right-line" />
+                <p>{title}</p>
+            </div>
+        )
+    }
+    <slot />
 </section>
