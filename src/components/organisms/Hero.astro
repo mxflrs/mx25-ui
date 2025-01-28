@@ -7,35 +7,26 @@
         class="w-full h-full absolute top-0 left-0 flex justify-center items-center -z-10"
     >
         <img
-            src="/public/images/x-symbol-xl.svg"
+            src="/public/images/x-symbol-xl-light.svg"
             alt="icon"
             id="bigIcon"
-            data-light-url="/public/images/x-symbol-xl.svg"
-            data-dark-url="/public/images/x-symbol-xl-light.svg"
         />
     </div>
 </section>
 
-<section class="flex w-2/3 mx-auto flex-col max-h-96 bg-white rounded-lg">
-    <p class="leading-8 text-center -mt-16">
-        Full-stack developer and former senior designer. <br /> I create intuitive
-        interfaces, build scalable back-end systems, and deliver <br /> modern web
-        solutions that combine creativity and tech seamlessly.
+<section class="flex w-2/3 mx-auto flex-col max-h-96 bg-white rounded-lg z-10 relative mb-24 group">
+    <p class="leading-8 text-center -mt-16 dark:text-mx-dark">
+        <span class="dark:text-mx-light">
+            Full-stack developer and former senior designer. <br /> I create intuitive
+            interfaces, build scalable back-end systems, and deliver
+        </span><br /> modern web solutions that combine creativity and tech seamlessly.
     </p>
     <img
         src="/public/images/mx-at-codex.webp"
         alt=""
         class="w-16 mx-auto pt-16 pb-4 hover:scale-125"
     />
+    <div class="absolute -bottom-3 left-0 flex justify-center w-full">
+        <img src="/public/images/brand-x-purple.svg" alt="" class="group-hover:rotate-45" />
+    </div>
 </section>
-
-<script>
-    const logoImage = document.getElementById('bigIcon') as HTMLImageElement;
-    const body = document.body;
-    if (body.classList.contains('light')) {
-        debugger;
-        logoImage.src = '/public/images/x-symbol-xl.svg';
-    } else {
-        logoImage.src = '/public/images/x-symbol-xl-light.svg';
-    }
-</script>
