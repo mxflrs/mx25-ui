@@ -1,1 +1,41 @@
-<h2>Hero</h2>
+<section
+    class="relative flex flex-col justify-center items-center w-full flex-1 *:text-[7.5rem] min-h-[80vh]"
+>
+    <h1 class="uppercase font-bold">Hi. I'm Max.</h1>
+    <h1 class="uppercase font-bold">A Developer.</h1>
+    <div
+        class="w-full h-full absolute top-0 left-0 flex justify-center items-center -z-10"
+    >
+        <img
+            src="/public/images/x-symbol-xl.svg"
+            alt="icon"
+            id="bigIcon"
+            data-light-url="/public/images/x-symbol-xl.svg"
+            data-dark-url="/public/images/x-symbol-xl-light.svg"
+        />
+    </div>
+</section>
+
+<section class="flex w-2/3 mx-auto flex-col max-h-96 bg-white rounded-lg">
+    <p class="leading-8 text-center -mt-16">
+        Full-stack developer and former senior designer. <br /> I create intuitive
+        interfaces, build scalable back-end systems, and deliver <br /> modern web
+        solutions that combine creativity and tech seamlessly.
+    </p>
+    <img
+        src="/public/images/mx-at-codex.webp"
+        alt=""
+        class="w-16 mx-auto pt-16 pb-4 hover:scale-125"
+    />
+</section>
+
+<script>
+    const logoImage = document.getElementById('bigIcon') as HTMLImageElement;
+    const body = document.body;
+    if (body.classList.contains('light')) {
+        debugger;
+        logoImage.src = '/public/images/x-symbol-xl.svg';
+    } else {
+        logoImage.src = '/public/images/x-symbol-xl-light.svg';
+    }
+</script>

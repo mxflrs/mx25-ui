@@ -8,6 +8,17 @@
   }
 }
 
+:root {
+  --mx-dark: #1E2028;
+  --mx-blue: #3D3E67;
+  --mx-purple: #904C6F;
+  --mx-pink: #FDBBFB;
+  --mx-yellow: #F0C8A8;
+  --mx-lila: #C1CCFA;
+  --mx-sky: #D9EAFF;
+  --mx-light: #FFF3E8;
+}
+
 html,
 body {
   margin: 0;
@@ -33,10 +44,13 @@ body {
 /* Default light gradient */
 body.light {
   background: rgb(217, 234, 255);
-  background: linear-gradient(164deg, rgba(217, 234, 255, 1) 0%, rgba(255, 243, 232, 1) 60%);
+  background: linear-gradient(164deg,
+      rgba(217, 234, 255, 1) 0%,
+      rgba(255, 243, 232, 1) 60%,
+      rgba(129, 73, 110, 0.5) 100%);
   background-size: 200% 200%;
   animation: moveGradient 5s ease infinite;
-  color: black;
+  color: var(--mx-dark);
 }
 
 /* Dark gradient */
@@ -48,7 +62,7 @@ body.dark {
       rgba(129, 73, 110, 1) 100%);
   background-size: 200% 200%;
   animation: moveGradient 5s ease infinite;
-  color: white;
+  color: var(--mx-light);
 }
 
 h1 {
@@ -79,4 +93,22 @@ p,
 a,
 span {
   font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a {
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+}
+
+.btn {
+  @apply px-3 py-1 bg-white hover:bg-mx-blue rounded hover:text-white dark:bg-mx-blue hover:dark:bg-mx-purple dark:text-mx-light;
 }

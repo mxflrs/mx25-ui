@@ -1,3 +1,61 @@
-<nav>
-    <h1>This is my navbar</h1>
+<nav class="px-4 py-2 flex justify-between items-center">
+    <img id="logo" src="/images/logo-blue.svg" alt="Logo" class="w-10" />
+    <div class="flex gap-4 items-center">
+        <button id="theme-switch" class="btn">
+            <i class="ri-moon-line"></i>
+        </button>
+
+        <button class="btn">
+            <i class="ri-menu-3-fill"></i>
+        </button>
+    </div>
 </nav>
+
+<script>
+    const iconButton = document.getElementById('theme-switch');
+    const logoImage = document.getElementById('logo') as HTMLImageElement; // Image element
+    const icon = iconButton?.querySelector('i');
+
+    // Function to toggle theme
+    function toggleTheme() {
+        const body = document.body;
+
+        // Toggle classes for theme
+        if (body.classList.contains('light')) {
+            body.classList.replace('light', 'dark');
+            // Change the logo for dark mode
+            logoImage.src = '/images/logo-light.svg';
+        } else {
+            body.classList.replace('dark', 'light');
+            // Change the logo for light mode
+            logoImage.src = '/images/logo-blue.svg';
+        }
+
+        // Switch icon (moon/sun)
+        if (icon?.classList.contains('ri-moon-line')) {
+            icon.classList.replace('ri-moon-line', 'ri-sun-line');
+        } else {
+            icon?.classList.replace('ri-sun-line', 'ri-moon-line');
+        }
+    }
+
+    // Event listener for theme switch button
+    iconButton?.addEventListener('click', toggleTheme);
+
+    // Hover effect to change icons
+    icon?.addEventListener('mouseenter', () => {
+        if (icon?.classList.contains('ri-moon-line')) {
+            icon.classList.replace('ri-moon-line', 'ri-moon-fill');
+        } else if (icon?.classList.contains('ri-sun-line')) {
+            icon.classList.replace('ri-sun-line', 'ri-sun-fill');
+        }
+    });
+
+    icon?.addEventListener('mouseleave', () => {
+        if (icon?.classList.contains('ri-moon-fill')) {
+            icon.classList.replace('ri-moon-fill', 'ri-moon-line');
+        } else if (icon?.classList.contains('ri-sun-fill')) {
+            icon.classList.replace('ri-sun-fill', 'ri-sun-line');
+        }
+    });
+</script>
