@@ -23,7 +23,18 @@ const caseStudies = await client.fetch(`*[_type == "case-study"]{
   }
 }
 `);
-const categories = await client.fetch(`*[_type == "experiences"]`);
+const categories = await client.fetch(`*[_type == "tech-categories"]{
+  category,
+  icon,
+  focus[]{
+    title,
+    technologies[]->{
+      technology,
+      icon,
+      yoe
+    }
+  }
+}`);
 ---
 
 <Layout>

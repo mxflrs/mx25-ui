@@ -7,7 +7,7 @@ interface Props {
 const { caseStudies }: Props = Astro.props;
 ---
 
-<Container title="Case Studies" className="pt-32">
+<Container title="Case Studies" className="pt-32 w-2/3 mx-auto">
     <div class="grid grid-cols-2 gap-4">
         {
             caseStudies.map((cs) => (

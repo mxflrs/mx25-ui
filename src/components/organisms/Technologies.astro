@@ -1,7 +1,22 @@
 ---
+import type { ICategory } from '../../core/interfaces/category.interface';
 import Container from '../molecule/Container.astro';
+interface Props {
+    categories: ICategory[];
+}
+const { categories }: Props = Astro.props;
 ---
 
-<Container title="Technologies">
-    <h4>Tech</h4>
+<Container title="Technologies" className="flex flex-col gap-4">
+    {
+        categories.map((c) => (
+            <div class="flex p-2 rounded-md items-center border-[1px] border-mx-blue justify-between hover:bg-white dark:hover:bg-mx-blue dark:border-mx-lila">
+                <div class="flex gap-2 items-center">
+                    <i class="ri-menu-3-fill" />
+                    <p>{c.category}</p>
+                </div>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+        ))
+    }
 </Container>
