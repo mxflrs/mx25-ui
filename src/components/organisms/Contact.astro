@@ -1,9 +1,34 @@
 ---
+import Button from '../atoms/Button.astro';
 import Container from '../molecule/Container.astro';
 ---
 
 <Container className="pb-40 pt-40">
-    <div class="bg-white p-16 rounded-md">
-        <h4 class="text-center font-bold">Have an exciting project where you need help?</h4>
+    <div
+        class="bg-white dark:bg-mx-blue py-16 rounded-md w-2/3 mx-auto relative"
+    >
+        <h4 class="text-center font-bold leading-normal px-24">
+            Have an exciting project where you need help?
+        </h4>
+        <div
+            class="absolute -bottom-6 left-0 flex justify-center items-center mx-auto w-full"
+        >
+            <Button class="bg-white">Get In Touch</Button>
+        </div>
     </div>
 </Container>
+
+<style>
+    .relative::before {
+        content: '';
+        width: 1.5rem;
+        height: 1.5rem;
+        background-image: url('/public/images/brand-x-blue.svg');
+        background-size: cover;
+        position: absolute;
+        top: -0.20rem;
+        left: 50%;
+        transform: translateX(-50%);
+        rotate: 45deg;
+    }
+</style>

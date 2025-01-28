@@ -12,7 +12,7 @@ const { experiences }: Props = Astro.props;
 <Container title="Experience">
     {
         experiences.map((e) => (
-            <div class="grid grid-cols-4 items-center p-8 border border-mx-dark dark:border-mx-light rounded-md mb-4 hover:bg-white dark:hover:bg-mx-blue">
+            <div class="grid grid-cols-4 items-center p-8 border border-mx-purple dark:border-mx-light rounded-md mb-4 hover:bg-white dark:hover:bg-mx-blue relative">
                 <p>{e.fromYear}</p>
                 <p>{e.position}</p>
                 <p>{e.company}</p>
@@ -22,3 +22,18 @@ const { experiences }: Props = Astro.props;
     }
     <Button>Know More</Button>
 </Container>
+
+<style>
+    .relative::before {
+        content: '';
+        width: 1.5rem;
+        height: 1.5rem;
+        background-image: url('/public/images/brand-x-blue.svg');
+        background-size: cover;
+        position: absolute;
+        left: -1.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        rotate: 45deg;
+    }
+</style>
