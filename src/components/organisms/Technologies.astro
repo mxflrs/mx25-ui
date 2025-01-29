@@ -9,14 +9,74 @@ const { categories }: Props = Astro.props;
 
 <Container title="Technologies" className="flex flex-col gap-4">
     {
-        categories.map((c) => (
-            <div class="flex p-2 rounded-md items-center border-[1px] border-mx-blue justify-between hover:bg-white dark:hover:bg-mx-blue dark:border-mx-lila">
-                <div class="flex gap-2 items-center">
-                    <i class="ri-menu-3-fill" />
-                    <p>{c.category}</p>
+        categories.map((c, index) => (
+            <div class="relative">
+                <button
+                    class="flex py-2 px-4 w-full rounded-b-md items-center border-t-[1px] border-white justify-between hover:bg-white dark:hover:bg-mx-purple dark:border-mx-blue category-toggle group"
+                    data-index={index}
+                >
+                    <div class="flex gap-2 items-center">
+                        <i class="ri-menu-3-fill" />
+                        <p class="font-bold">{c.category}</p>
+                    </div>
+                    <i class="ri-arrow-down-s-line text-white group-hover:text-mx-blue dark:text-mx-blue" />
+                </button>
+                <div
+                    class={`transition-all duration-300 ease-in-out hidden category-content`}
+                    data-index={index}
+                >
+                    <div class="p-8 flex flex-col gap-2">
+                        {c.focus.map((f) => (
+                            <div class="flex flex-col gap-2">
+                                <div class="flex gap-2 items-center">
+                                    <i class="ri-send-plane-2-line text-white" />
+                                    <p class="italic">{f.title}</p>
+                                </div>
+                                <div class="flex gap-2 pb-4 ml-4">
+                                    {f.technologies.map((ft) => (
+                                        <p class="px-4 py-2 rounded-2xl bg-white dark:bg-mx-lila dark:text-mx-dark font-semibold">
+                                            {ft.technology}
+                                        </p>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <i class="ri-arrow-down-s-line"></i>
             </div>
         ))
     }
 </Container>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        let openIndex = null; // Track the currently open category index
+
+        const toggles = document.querySelectorAll('.category-toggle');
+
+        toggles.forEach((toggle) => {
+            toggle.addEventListener('click', () => {
+                const index = toggle.getAttribute('data-index');
+                const content = document.querySelector(
+                    `.category-content[data-index="${index}"]`
+                );
+
+                // If the clicked category is already open, close it
+                if (openIndex === index) {
+                    content.classList.toggle('hidden');
+                    openIndex = null; // Reset openIndex
+                } else {
+                    // Close the previously opened category
+                    if (openIndex !== null) {
+                        const previousContent = document.querySelector(
+                            `.category-content[data-index="${openIndex}"]`
+                        );
+                        previousContent.classList.add('hidden'); // Hide previous content
+                    }
+                    content.classList.remove('hidden'); // Show the current content
+                    openIndex = index; // Update openIndex to the currently opened category
+                }
+            });
+        });
+    });
+</script>

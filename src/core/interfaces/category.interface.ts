@@ -7,5 +7,5 @@ export interface ICategory {
     focus: {
         title: string;
         technologies: ITechnology[];
-    }
+    }[]
 }
