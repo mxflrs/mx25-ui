@@ -14,5 +14,6 @@ export default defineConfig({
         '@images': '/src/assets/images'
       }
     }
-  }
+  },
+  output: 'server'
 });

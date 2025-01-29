@@ -7,13 +7,13 @@ interface Props {
 const { categories }: Props = Astro.props;
 ---
 
-<Container title="Technologies I use">
+<Container title="Technologies I use" className="my-32">
     <div class="grid xl:grid-cols-5 gap-4 md:grid-cols-3 grid-cols-2">
         {
             categories.map((c, index) => (
                 <div class="relative">
                     <button
-                        class="flex flex-wrap py-2 px-4 w-full rounded-b-md items-center hover:rounded-lg border-white justify-between hover:border-mx-dark hover:bg-white dark:hover:bg-mx-purple category-toggle group relative"
+                        class="flex flex-wrap py-2 px-4 w-full items-center rounded-lg justify-between hover:bg-white dark:hover:bg-mx-purple category-toggle group relative"
                         data-index={index}
                     >
                         <div class="flex gap-4 items-center">
@@ -60,9 +60,22 @@ const { categories }: Props = Astro.props;
         let openIndex = null; // Track the currently open category index
 
         const toggles = document.querySelectorAll('.category-toggle');
+        const contents = document.querySelectorAll('.category-content');
+
+        function closeOpenCategory() {
+            if (openIndex !== null) {
+                const openContent = document.querySelector(
+                    `.category-content[data-index="${openIndex}"]`
+                );
+                if (openContent) openContent.classList.add('hidden');
+                openIndex = null;
+            }
+        }
 
         toggles.forEach((toggle) => {
-            toggle.addEventListener('click', () => {
+            toggle.addEventListener('click', (event) => {
+                event.stopPropagation(); // Prevent closing when clicking on the button itself
+
                 const index = toggle.getAttribute('data-index');
                 const content = document.querySelector(
                     `.category-content[data-index="${index}"]`
@@ -70,20 +83,30 @@ const { categories }: Props = Astro.props;
 
                 // If the clicked category is already open, close it
                 if (openIndex === index) {
-                    content.classList.toggle('hidden');
-                    openIndex = null; // Reset openIndex
+                    closeOpenCategory();
                 } else {
-                    // Close the previously opened category
-                    if (openIndex !== null) {
-                        const previousContent = document.querySelector(
-                            `.category-content[data-index="${openIndex}"]`
-                        );
-                        previousContent.classList.add('hidden'); // Hide previous content
-                    }
-                    content.classList.remove('hidden'); // Show the current content
-                    openIndex = index; // Update openIndex to the currently opened category
+                    closeOpenCategory();
+                    content.classList.remove('hidden'); // Show the new content
+                    openIndex = index;
                 }
             });
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (event) => {
+            if (
+                !event.target.closest('.category-toggle') &&
+                !event.target.closest('.category-content')
+            ) {
+                closeOpenCategory();
+            }
+        });
+
+        // Close on Escape key press
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeOpenCategory();
+            }
         });
     });
 </script>

@@ -1,10 +1,19 @@
 ---
+const { id, className = '' } = Astro.props;
 
+const defaultClasses =
+    'bg-mx-blue hover:scale-105 text-mx-light rounded-md px-8 py-2 hover:bg-mx-purple dark:bg-mx-purple dark:hover:bg-mx-yellow';
+
+const defaultClassesArray = defaultClasses.split(' ');
+const customClassesArray = className.split(' ');
+
+// Filter out defaults that conflict with customClasses
+const classes = [
+    ...defaultClassesArray.filter((cls) => !customClassesArray.includes(cls)),
+    ...customClassesArray,
+].join(' ');
 ---
 
-<button
-    type="button"
-    class="bg-mx-blue hover:scale-105 text-mx-light rounded-md px-8 py-2 hover:bg-mx-purple dark:bg-mx-purple dark:hover:bg-mx-yellow"
->
+<button id={id} type="button" class={classes}>
     <slot />
 </button>
