@@ -5,3 +5,11 @@ interface SanityDocument {
     _updatedAt: string;
     _rev: string;
   }
+
+  export interface SanityImage {
+    _type: string;
+    asset: {
+      _ref: string;
+      _type: string;
+    }
+  }

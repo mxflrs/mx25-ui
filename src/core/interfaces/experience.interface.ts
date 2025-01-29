@@ -1,3 +1,5 @@
+import type { SanityImage } from "./sanity";
+
 export interface IExperience {
     company: string;
     fromYear: Date;
@@ -5,6 +7,6 @@ export interface IExperience {
     position: string;
     location: string;
     duration: number;
-    logo: string;
+    logo: SanityImage;
     url: string;
 }
