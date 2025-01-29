@@ -12,14 +12,37 @@ const { caseStudies }: Props = Astro.props;
     <div class="grid grid-cols-2 gap-4 relative">
         {
             caseStudies.map((cs) => (
-                <div class="flex flex-col bg-white rounded-md min-h-56 items-end justify-end px-4 py-2 group">
-                    <img src={sanityImageUrl(cs.image.asset._ref, 400)} alt={cs.title} class="pb-8 mr-auto grayscale opacity-40 group-hover:opacity-100">
-                    <p class="dark:text-mx-blue pb-2 font-thin text-2xl">{cs.title}</p>
+                <div class="flex flex-col bg-white rounded-md min-h-56 items-end justify-end px-4 py-2 group relative">
+                    <img
+                        src={sanityImageUrl(cs.image.asset._ref, 400)}
+                        alt={cs.title}
+                        class="pb-8 mr-auto grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0"
+                    />
+                    <p class="dark:text-mx-blue font-bold text-2xl text-mx-blue">
+                        {cs.title}
+                    </p>
                     <div class="flex gap-2 p-2 flex-wrap">
                         {cs.technologies.map((t) => (
-                            <p class="dark:text-mx-blue text-xs bg-mx-lila rounded-xl px-3 py-1 text-white">{t.technology}</p>
+                            <p class="dark:text-mx-blue text-xs border-[1px] border-mx-lila rounded-xl px-2 py-1 text-mx-lila">
+                                {t.technology}
+                            </p>
                         ))}
                     </div>
+
+                    <a
+                        href={cs.url}
+                        target="_blank"
+                        class="absolute top-4 right-4 px-4 py-2 rounded-md bg-mx-lila text-mx-light group-hover:text-mx-dark hover:bg-mx-blue group-hover:hover:text-mx-light"
+                    >
+                        <i class="ri-arrow-right-up-line" />
+                    </a>
+                    <a
+                        href={cs.repo}
+                        target="_blank"
+                        class="absolute bottom-4 left-4 px-4 py-2 rounded-md border-[1px] border-mx-lila text-mx-lila group-hover:text-mx-dark hover:bg-mx-blue group-hover:hover:text-mx-light"
+                    >
+                        <i class="ri-github-line" />
+                    </a>
                 </div>
             ))
         }
@@ -27,7 +50,7 @@ const { caseStudies }: Props = Astro.props;
 </Container>
 
 <style>
-    .relative::before {
+    .relative:not(.flex)::before {
         content: '';
         width: 32rem;
         height: 32rem;

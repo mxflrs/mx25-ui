@@ -2,25 +2,52 @@
 import Container from '../molecule/Container.astro';
 import type { IExperience } from '../../core/interfaces/experience.interface';
 import Button from '../atoms/Button.astro';
+import { sanityImageUrl } from '../../core/utils/sanity-image';
 interface Props {
     experiences: IExperience[];
 }
 
 const { experiences }: Props = Astro.props;
+const sortedExperiences = experiences.sort((a, b) => {
+    return new Date(b.fromYear).getTime() - new Date(a.fromYear).getTime();
+});
 ---
 
 <Container title="Recent Experience" className="pt-32">
     {
-        experiences.map((e) => (
+        sortedExperiences.map((e, idx) => (
             <div class="grid grid-cols-4 items-center p-8 border border-mx-purple dark:border-mx-blue rounded-md mb-4 hover:bg-white dark:hover:bg-mx-blue relative">
-                <p>{e.fromYear}</p>
-                <p>{e.position}</p>
-                <p>{e.company}</p>
-                <p>{e.location}</p>
+                <div class="flex gap-2 items-center">
+                    <i class="ri-calendar-line pb-1" />
+                    <p class="leading-none">
+                        {e.fromYear.toString().slice(0, 4)}
+                        {idx === 0 ? ' - Present' : ''}
+                    </p>
+                </div>
+                <div class="flex gap-2 items-center">
+                    <i class="ri-suitcase-line pb-1" />
+                    <p class="leading-none">{e.position}</p>
+                </div>
+                <a class="flex gap-2 items-center group" href={e.url} target="_blank">
+                    <img
+                        src={sanityImageUrl(e.logo.asset._ref, 100, 100)}
+                        alt=""
+                        class="rounded-full w-10 h-10 object-cover"
+                    />
+                    <p class="leading-none group-hover:underline underline-offset-8 group-hover:text-mx-purple">
+                        {e.company}
+                    </p>
+                </a>
+                <div class="flex gap-2 items-center">
+                    <i class="ri-map-pin-line pb-1" />
+                    <p class="leading-none">{e.location}</p>
+                </div>
             </div>
         ))
     }
-    <Button>Know More</Button>
+    <a href="https://linkedin.com/in/maxfloresdev" target="_blank">
+        <Button>Know More</Button>
+    </a>
 </Container>
 
 <style>
