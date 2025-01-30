@@ -21,7 +21,7 @@ const { caseStudies }: Props = Astro.props;
                     <p class="dark:text-mx-blue font-bold text-2xl text-mx-blue">
                         {cs.title}
                     </p>
-                    <div class="flex gap-2 p-2 flex-wrap">
+                    <div class="lg:flex gap-2 p-2 flex-wrap hidden">
                         {cs.technologies.map((t) => (
                             <p class="dark:text-mx-blue text-xs border-[1px] border-mx-lila rounded-xl px-2 py-1 text-mx-lila">
                                 {t.technology}
@@ -61,5 +61,11 @@ const { caseStudies }: Props = Astro.props;
         top: 50%;
         transform: translate(-50%, -50%);
         z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+        .relative:not(.flex)::before {
+            display: none; /* Set width to 100% for tablet and smaller screens */
+        }
     }
 </style>

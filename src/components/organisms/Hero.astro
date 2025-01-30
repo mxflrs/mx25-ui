@@ -1,20 +1,27 @@
 <section
-    class="relative flex flex-col justify-center items-center w-full flex-1 *:text-[7.5rem] min-h-[80vh]"
+    class="relative flex flex-col justify-center items-center w-full flex-1 min-h-[80vh] *:text-center"
 >
-    <h1 class="uppercase font-bold">Hi. I'm Max.</h1>
-    <h1 class="uppercase font-bold">A Developer.</h1>
+    <div class="flex md:gap-12 gap-2 flex-wrap justify-center">
+        <h1 class="uppercase font-bold lg:text-9xl md:text-8xl text-7xl">
+            Hi.
+        </h1>
+        <h1 class="uppercase font-bold lg:text-9xl md:text-8xl text-7xl">
+            I'm Max.
+        </h1>
+    </div>
+    <h1 class="uppercase font-bold lg:text-9xl md:text-8xl text-3xl hyphenate">
+        A Developer.
+    </h1>
     <div
         class="w-full h-full absolute top-0 left-0 flex justify-center items-center -z-10"
     >
-        <img
-            src="/images/x-symbol-xl-light.svg"
-            alt="icon"
-            id="bigIcon"
-        />
+        <img src="/images/x-symbol-xl-light.svg" alt="icon" id="bigIcon" />
     </div>
 </section>
 
-<section class="flex w-2/3 mx-auto flex-col max-h-96 bg-white dark:bg-mx-light rounded-lg z-10 relative mb-24 group">
+<section
+    class="flex lg:w-2/3 mx-8 w-auto lg:mx-auto flex-col max-h-96 bg-white dark:bg-mx-light rounded-lg z-10 relative mb-24 group"
+>
     <p class="leading-8 text-center -mt-16 dark:text-mx-dark">
         <span class="dark:text-mx-light">
             Full-stack developer and former senior designer. <br /> I create intuitive
@@ -27,6 +34,18 @@
         class="w-16 mx-auto pt-16 pb-4 hover:scale-125"
     />
     <div class="absolute -bottom-3 left-0 flex justify-center w-full">
-        <img src="/images/brand-x-purple.svg" alt="" class="group-hover:rotate-45" />
+        <img
+            src="/images/brand-x-purple.svg"
+            alt=""
+            class="group-hover:rotate-45"
+        />
     </div>
 </section>
+
+<style>
+    .hyphenate {
+        hyphens: auto; /* Enable automatic hyphenation */
+        word-break: break-word; /* Allow breaking words to prevent overflow */
+        overflow-wrap: break-word; /* Break long words to prevent overflow */
+    }
+</style>
