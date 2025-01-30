@@ -7,7 +7,7 @@ interface Props {
 const { categories }: Props = Astro.props;
 ---
 
-<Container title="Technologies I use" className="my-32">
+<Container title="Technologies I use" className="md:my-32 mb-0 mt-24">
     <div class="grid xl:grid-cols-5 gap-4 md:grid-cols-3 grid-cols-1">
         {
             categories.map((c, index) => (

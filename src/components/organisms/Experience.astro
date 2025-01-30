@@ -13,7 +13,7 @@ const sortedExperiences = experiences.sort((a, b) => {
 });
 ---
 
-<Container title="Recent Experience" className="pt-32">
+<Container title="Recent Experience" className="lg:pt-32 pt-2">
     {
         sortedExperiences.map((e, idx) => (
             <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 items-center p-8 border border-mx-purple dark:border-mx-blue rounded-md mb-4 hover:bg-white dark:hover:bg-mx-blue relative">
