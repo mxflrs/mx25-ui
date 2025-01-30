@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import vercel from '@astrojs/vercel';
 // @ts-ignore
 import htmx from 'astro-htmx';
 
@@ -15,5 +16,6 @@ export default defineConfig({
       }
     }
   },
-  output: 'server'
+  output: 'server',
+  adapter: vercel(),
 });
