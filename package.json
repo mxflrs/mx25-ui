@@ -16,5 +16,8 @@
     "astro-htmx": "^1.0.6",
     "htmx.org": "^1.9.12",
     "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "rollup": "^4.32.1"
   }
 }
