@@ -7,15 +7,15 @@ const phone = import.meta.env.PHONE;
 
 <Container className="md:pb-16 md:pt-40 pb-8 pt-8">
     <div
-        class="bg-white dark:bg-mx-blue py-16 rounded-md md:w-2/3 w-full md:px-0 px-8 mx-auto drop-shadow-sm"
+        class="bg-white dark:bg-mx-blue pt-16 rounded-md md:w-2/3 w-full md:px-0 px-8 mx-auto drop-shadow-sm relatived"
     >
         <h6 class="text-center font-bold leading-normal lg:px-24 md:px-16 px-8">
             Have an exciting project where you need help?
         </h6>
         <div
-            class="absolute -bottom-6 left-0 flex justify-center items-center mx-auto w-full"
+            class="flex justify-center items-center mx-auto w-full pt-12"
         >
-            <Button id="openDialog">Get In Touch</Button>
+            <Button id="openDialog" className="-mb-4">Get In Touch</Button>
         </div>
     </div>
 </Container>
@@ -54,7 +54,7 @@ const phone = import.meta.env.PHONE;
 </div>
 
 <style>
-    .relative::before {
+    .relatived::before {
         content: '';
         width: 1.5rem;
         height: 1.5rem;
