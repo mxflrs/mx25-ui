@@ -1,25 +1,64 @@
 <nav class="px-4 pt-3 flex justify-between items-center">
-    <img id="logo" src="/images/logo-blue.svg" alt="Logo" class="w-10" />
+    <img id="logo" src="/images/logo-light.svg" alt="Logo" class="w-10" />
     <div class="flex gap-4 items-center">
         <button id="theme-switch" class="btn">
-            <i class="ri-moon-line" />
+            <i class="ri-moon-line"></i>
         </button>
 
-        <button class="btn">
-            <i class="ri-menu-3-fill" />
+        <button class="btn" id="openAside">
+            <i class="ri-menu-3-fill"></i>
         </button>
     </div>
 </nav>
+
+<aside
+    id="aside"
+    class="fixed hidden top-0 right-0 h-screen lg:w-1/2 w-full bg-gradient-to-l from-mx-blue to-transparent z-50 md:bg-opacity-90 bg-opacity-100"
+>
+    <div
+        class="w-full flex justify-center items-end flex-col h-full p-16 gap-6 *:text-mx-light relative"
+    >
+        <a href="#tech" class="closeAside">Technologies I Use</a>
+        <a href="#projects" class="closeAside">Latest Projects</a>
+        <a href="#experience" class="closeAside">Experience</a>
+    </div>
+    <button class="btn absolute top-4 right-4 dark:bg-mx-purple closeAside hover:dark:bg-mx-lila">
+        <i class="ri-close-large-line"></i>
+    </button>
+</aside>
 
 <script>
     const iconButton = document.getElementById('theme-switch');
     const logoImage = document.getElementById('logo') as HTMLImageElement;
     const icon = iconButton?.querySelector('i');
     const bigIcon = document.getElementById('bigIcon') as HTMLImageElement;
+    const closeAsideButtons = document.querySelectorAll('.closeAside');
+    const aside = document.getElementById('aside');
+    const openAside = document.getElementById('openAside');
+
+    // Open the aside
+    openAside?.addEventListener('click', () => {
+        aside?.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+    });
+
+    // Close the aside when clicking on anchors
+    closeAsideButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            aside?.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        });
+    });
+
+    // Close the aside when clicking the close button
+    const closeButton = document.querySelector('.closeAside');
+    closeButton?.addEventListener('click', () => {
+        aside?.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+    });
 
     function toggleTheme() {
         const body = document.body;
-
         if (body.classList.contains('light')) {
             body.classList.replace('light', 'dark');
             logoImage.src = '/images/logo-light.svg';

@@ -1,5 +1,5 @@
 ---
-const { className = '', title = '' } = Astro.props;
+const { className = '', title = '', id = '' } = Astro.props;
 const defaultClasses = 'pb-16 px-8';
 
 const defaultClassesArray = defaultClasses.split(' ');
@@ -12,7 +12,7 @@ const classes = [
 ].join(' ');
 ---
 
-<section class=`${classes}`>
+<section class=`${classes}` id={id}>
     {
         title.length > 0 && (
             <div class="flex gap-2 items-center pb-12">

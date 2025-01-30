@@ -8,7 +8,7 @@ interface Props {
 const { caseStudies }: Props = Astro.props;
 ---
 
-<Container title="Latest Projects" className="md:pt-32 pt-12">
+<Container title="Latest Projects" className="md:pt-32 pt-12" id="projects">
     <div class="grid md:grid-cols-2 grid-cols-1 gap-4 relative">
         {
             caseStudies.map((cs) => (
@@ -32,14 +32,14 @@ const { caseStudies }: Props = Astro.props;
                     <a
                         href={cs.url}
                         target="_blank"
-                        class="absolute top-4 right-4 px-4 py-2 rounded-md bg-mx-lila text-mx-light group-hover:text-mx-dark hover:bg-mx-blue group-hover:hover:text-mx-light"
+                        class="absolute top-4 right-4 px-4 py-2 rounded-md bg-mx-lila text-mx-dark hover:bg-mx-blue group-hover:hover:text-mx-light dark:hover:bg-mx-purple"
                     >
                         <i class="ri-arrow-right-up-line" />
                     </a>
                     <a
                         href={cs.repo}
                         target="_blank"
-                        class="absolute bottom-4 left-4 px-4 py-2 rounded-md border-[1px] border-mx-lila text-mx-lila group-hover:text-mx-dark hover:bg-mx-blue group-hover:hover:text-mx-light dark:group-hover:text-mx-light"
+                        class="absolute bottom-4 left-4 px-4 py-2 rounded-md border-[1px] border-mx-lila text-mx-lila hover:bg-mx-blue hover:border-transparent"
                     >
                         <i class="ri-github-line" />
                     </a>

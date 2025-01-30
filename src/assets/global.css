@@ -8,6 +8,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --mx-dark: #1E2028;
   --mx-blue: #3D3E67;
