@@ -1,3 +1,7 @@
+---
+import Aside from '../molecule/Aside.astro';
+---
+
 <nav class="px-4 pt-3 flex justify-between items-center">
     <img id="logo" src="/images/logo-light.svg" alt="Logo" class="w-10" />
     <div class="flex gap-4 items-center">
@@ -11,21 +15,7 @@
     </div>
 </nav>
 
-<aside
-    id="aside"
-    class="fixed hidden top-0 right-0 h-screen lg:w-1/2 w-full bg-gradient-to-l from-mx-blue to-transparent z-50 md:bg-opacity-90 bg-opacity-100"
->
-    <div
-        class="w-full flex justify-center items-end flex-col h-full p-16 gap-6 *:text-mx-light relative"
-    >
-        <a href="#tech" class="closeAside">Technologies I Use</a>
-        <a href="#projects" class="closeAside">Latest Projects</a>
-        <a href="#experience" class="closeAside">Experience</a>
-    </div>
-    <button class="btn absolute top-4 right-4 dark:bg-mx-purple closeAside hover:dark:bg-mx-lila">
-        <i class="ri-close-large-line"></i>
-    </button>
-</aside>
+<Aside />
 
 <script>
     const iconButton = document.getElementById('theme-switch');
